@@ -1,0 +1,611 @@
+{
+ "Resources": {
+  "publicrdsvpcDDF62439": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/Resource"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet1SubnetABBCE38A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "AvailabilityZone": "us-west-2a",
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet1/Subnet"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet1RouteTableB0649DC9": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet1/RouteTable"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet1RouteTableAssociationC7FAC11A": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet1RouteTableB0649DC9"
+    },
+    "SubnetId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet1SubnetABBCE38A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet1/RouteTableAssociation"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet1DefaultRoute38F5349A": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet1RouteTableB0649DC9"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "publicrdsvpcIGW58B6DB7B"
+    }
+   },
+   "DependsOn": [
+    "publicrdsvpcVPCGWA86EF794"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet1/DefaultRoute"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet2Subnet4A82F1BC": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "AvailabilityZone": "us-west-2b",
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet2/Subnet"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet2RouteTableD20B6645": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet2/RouteTable"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet2RouteTableAssociation613EA259": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet2RouteTableD20B6645"
+    },
+    "SubnetId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet2Subnet4A82F1BC"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet2/RouteTableAssociation"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet2DefaultRoute7830B9DF": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet2RouteTableD20B6645"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "publicrdsvpcIGW58B6DB7B"
+    }
+   },
+   "DependsOn": [
+    "publicrdsvpcVPCGWA86EF794"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet2/DefaultRoute"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet3Subnet16240E4E": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "AvailabilityZone": "us-west-2c",
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public-subnet"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet3"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet3/Subnet"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet3RouteTable2484D106": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc/public-subnetSubnet3"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet3/RouteTable"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet3RouteTableAssociation0020D263": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet3RouteTable2484D106"
+    },
+    "SubnetId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet3Subnet16240E4E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet3/RouteTableAssociation"
+   }
+  },
+  "publicrdsvpcpublicsubnetSubnet3DefaultRoute68FF537A": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "publicrdsvpcpublicsubnetSubnet3RouteTable2484D106"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "publicrdsvpcIGW58B6DB7B"
+    }
+   },
+   "DependsOn": [
+    "publicrdsvpcVPCGWA86EF794"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/public-subnetSubnet3/DefaultRoute"
+   }
+  },
+  "publicrdsvpcIGW58B6DB7B": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "rds-stack/public-rds-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/IGW"
+   }
+  },
+  "publicrdsvpcVPCGWA86EF794": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    },
+    "InternetGatewayId": {
+     "Ref": "publicrdsvpcIGW58B6DB7B"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-vpc/VPCGW"
+   }
+  },
+  "publicrdssg724080A5": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "rds-stack/public-rds-sg",
+    "GroupName": "rds-stackPublicRdsSG",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "allow TCP access from anywhere",
+      "FromPort": 3306,
+      "IpProtocol": "tcp",
+      "ToPort": 3306
+     }
+    ],
+    "VpcId": {
+     "Ref": "publicrdsvpcDDF62439"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-rds-sg/Resource"
+   }
+  },
+  "publicdbSubnetGroup952EA07A": {
+   "Type": "AWS::RDS::DBSubnetGroup",
+   "Properties": {
+    "DBSubnetGroupDescription": "Subnet group for public-db database",
+    "SubnetIds": [
+     {
+      "Ref": "publicrdsvpcpublicsubnetSubnet1SubnetABBCE38A"
+     },
+     {
+      "Ref": "publicrdsvpcpublicsubnetSubnet2Subnet4A82F1BC"
+     },
+     {
+      "Ref": "publicrdsvpcpublicsubnetSubnet3Subnet16240E4E"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-db/SubnetGroup/Default"
+   }
+  },
+  "publicdbE7E564DC": {
+   "Type": "AWS::RDS::DBInstance",
+   "Properties": {
+    "DBInstanceClass": "db.t2.micro",
+    "AllocatedStorage": "100",
+    "CopyTagsToSnapshot": true,
+    "DBInstanceIdentifier": "public-db-rds",
+    "DBName": "apps",
+    "DBSubnetGroupName": {
+     "Ref": "publicdbSubnetGroup952EA07A"
+    },
+    "Engine": "mysql",
+    "EngineVersion": "8.0.19",
+    "MasterUsername": "admin",
+    "MasterUserPassword": "admin123456",
+    "PubliclyAccessible": true,
+    "StorageType": "gp2",
+    "VPCSecurityGroups": [
+     {
+      "Fn::GetAtt": [
+       "publicrdssg724080A5",
+       "GroupId"
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/public-db/Resource"
+   }
+  },
+  "rdsstackprivatelambdaaccessrole4F70DFC6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-private-lambda-access-role/Resource"
+   }
+  },
+  "rdsstackprivatelambdaaccessroleDefaultPolicy5CEFF1E2": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:lambda:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":function:rds-stack-public-lambda"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:aws:lambda:",
+           {
+            "Ref": "AWS::Region"
+           },
+           ":",
+           {
+            "Ref": "AWS::AccountId"
+           },
+           ":function:rds-stack-private-lambda"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "rdsstackprivatelambdaaccessroleDefaultPolicy5CEFF1E2",
+    "Roles": [
+     {
+      "Ref": "rdsstackprivatelambdaaccessrole4F70DFC6"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-private-lambda-access-role/DefaultPolicy/Resource"
+   }
+  },
+  "rdsstackprivatelambda87C33B4D": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-355464123969-us-west-2",
+     "S3Key": "8fc7a8c8b4454086cae806237116f14397e119e5cd2341d9981ae5faa0e22fd9.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "rdsstackprivatelambdaaccessrole4F70DFC6",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "rds-stack-private-lambda",
+    "Handler": "index.main",
+    "MemorySize": 1024,
+    "Runtime": "nodejs16.x",
+    "Timeout": 5
+   },
+   "DependsOn": [
+    "rdsstackprivatelambdaaccessroleDefaultPolicy5CEFF1E2",
+    "rdsstackprivatelambdaaccessrole4F70DFC6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-private-lambda/Resource",
+    "aws:asset:path": "asset.8fc7a8c8b4454086cae806237116f14397e119e5cd2341d9981ae5faa0e22fd9",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "rdsstackpubliclambda149ED4FF": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-355464123969-us-west-2",
+     "S3Key": "f8945c6d1c3efb83fba6bb241909ba6164180d9a3e4eb637518badfc23b57512.zip"
+    },
+    "Role": {
+     "Fn::GetAtt": [
+      "rdsstackprivatelambdaaccessrole4F70DFC6",
+      "Arn"
+     ]
+    },
+    "Environment": {
+     "Variables": {
+      "region": "us-west-2",
+      "availabilityZones": "[\"us-west-2a\",\"us-west-2b\",\"us-west-2c\",\"us-west-2d\"]",
+      "endpoint": {
+       "Fn::GetAtt": [
+        "publicdbE7E564DC",
+        "Endpoint.Address"
+       ]
+      },
+      "port": {
+       "Fn::GetAtt": [
+        "publicdbE7E564DC",
+        "Endpoint.Port"
+       ]
+      },
+      "databaseName": "apps",
+      "userName": "admin",
+      "password": "admin123456",
+      "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+     }
+    },
+    "FunctionName": "rds-stack-public-lambda",
+    "Handler": "index.main",
+    "MemorySize": 1024,
+    "Runtime": "nodejs16.x",
+    "Timeout": 5
+   },
+   "DependsOn": [
+    "rdsstackprivatelambdaaccessroleDefaultPolicy5CEFF1E2",
+    "rdsstackprivatelambdaaccessrole4F70DFC6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-public-lambda/Resource",
+    "aws:asset:path": "asset.f8945c6d1c3efb83fba6bb241909ba6164180d9a3e4eb637518badfc23b57512",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "rdsstackpubliclambdaFunctionUrl8FFB6044": {
+   "Type": "AWS::Lambda::Url",
+   "Properties": {
+    "AuthType": "NONE",
+    "TargetFunctionArn": {
+     "Fn::GetAtt": [
+      "rdsstackpubliclambda149ED4FF",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-public-lambda/FunctionUrl/Resource"
+   }
+  },
+  "rdsstackpubliclambdainvokefunctionurlD355A4BB": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunctionUrl",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "rdsstackpubliclambda149ED4FF",
+      "Arn"
+     ]
+    },
+    "Principal": "*",
+    "FunctionUrlAuthType": "NONE"
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/rds-stack-public-lambda/invoke-function-url"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/2VRTW/CMAz9LdyDt4K0Ox8a4rJVZeOK3NRjKW2CYmcIVf3vSz+ASTu956dn+zmZwTyBZIIXnuriNK1MDs1OUJ9UlA4N6Rk0+7NWqy+7T1cqDXll9C7klqTTHixzQegD84oe+kNbMDttUIyzd3NHtlbIR+cGhS54HdeM1UJikO+arKgd6eCNXDfehXO/4K/QKl8wNGsUzJFpa1nQalJDinvPevlPuFlbZbCGJnND/B5TF0/tIw2sVRXWeYEH6woqGd56eA1W92fx/IDMJAyLDmINy6BPJMsYaWyFJk67d9zIp6+6LSOk5GvDHPW2VRmxCz6e0s+MH3M09ti53oOcw/Dwo6VVXS4o+ekneYFkDs+Tko2Z+mDF1ATZgL8qGcqT8QEAAA=="
+   },
+   "Metadata": {
+    "aws:cdk:path": "rds-stack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "publicLambdaUrl": {
+   "Value": {
+    "Fn::GetAtt": [
+     "rdsstackpubliclambdaFunctionUrl8FFB6044",
+     "FunctionUrl"
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
