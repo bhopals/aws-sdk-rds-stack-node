@@ -1,3 +1,0 @@
--- Your SQL scripts for initialization goes here...
-
-SELECT 'Hello World!' as message;
