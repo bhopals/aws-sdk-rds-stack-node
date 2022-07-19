@@ -1,0 +1,555 @@
+{
+  "version": "20.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "RdsStackExample": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "RdsStackExample.template.json",
+        "validateOnSynth": false
+      },
+      "metadata": {
+        "/RdsStackExample/public-rds/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrds890D239A",
+            "trace": [
+              "new Secret (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-secretsmanager/lib/secret.ts:578:22)",
+              "new DatabaseSecret (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/database-secret.ts:74:5)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:34:19)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcDDF62439",
+            "trace": [
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1311:21)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet1/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet1SubnetABBCE38A",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1667:20)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet1/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet1RouteTableB0649DC9",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1685:19)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet1/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet1RouteTableAssociationC7FAC11A",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1691:5)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet1/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet1DefaultRoute38F5349A",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1707:19)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1364:22",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1363:46)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet2/Subnet": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet2Subnet4A82F1BC",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1667:20)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet2/RouteTable": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet2RouteTableD20B6645",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1685:19)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet2/RouteTableAssociation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet2RouteTableAssociation613EA259",
+            "trace": [
+              "new Subnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1691:5)",
+              "new PublicSubnet (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1906:5)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1507:32",
+              "Array.forEach (<anonymous>)",
+              "Vpc.createSubnetResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1478:28)",
+              "Vpc.createSubnets (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1467:12)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1345:10)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/public-subnetSubnet2/DefaultRoute": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcpublicsubnetSubnet2DefaultRoute7830B9DF",
+            "trace": [
+              "PublicSubnet.addDefaultInternetRoute (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1707:19)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1364:22",
+              "Array.forEach (<anonymous>)",
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1363:46)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/IGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcIGW58B6DB7B",
+            "trace": [
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1352:19)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-vpc/VPCGW": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdsvpcVPCGWA86EF794",
+            "trace": [
+              "new Vpc (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/vpc.ts:1358:19)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:39:17)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-rds-sg/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicrdssg724080A5",
+            "trace": [
+              "new SecurityGroup (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:466:26)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:49:18)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-db/SubnetGroup/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicdbSubnetGroup952EA07A",
+            "trace": [
+              "new SubnetGroup (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/subnet-group.ts:78:25)",
+              "new DatabaseInstanceNew (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/instance.ts:668:46)",
+              "new DatabaseInstanceSource (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/instance.ts:857:5)",
+              "new DatabaseInstance (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/instance.ts:1011:5)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:61:24)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/public-db/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "publicdbE7E564DC",
+            "trace": [
+              "new DatabaseInstance (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/aws-rds/lib/instance.ts:1016:22)",
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:61:24)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/RdsStackInstance": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RdsStackInstance",
+            "trace": [
+              "new RdsStackExample (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/demos/rds-stack-example.ts:86:5)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/bin/rds-init-example.ts:14:1)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Module.m._compile (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1597:23)",
+              "Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Object.require.extensions.<computed> [as .ts] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/index.ts:1600:12)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "phase4 (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:579:12)",
+              "bootstrap (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:85:10)",
+              "main (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:54:10)",
+              "Object.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/ts-node/src/bin.ts:729:3)",
+              "Module._compile (node:internal/modules/cjs/loader:1101:14)",
+              "Object.Module._extensions..js (node:internal/modules/cjs/loader:1153:10)",
+              "Module.load (node:internal/modules/cjs/loader:981:32)",
+              "Function.Module._load (node:internal/modules/cjs/loader:822:12)",
+              "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)",
+              "node:internal/main/run_main_module:17:47"
+            ]
+          }
+        ],
+        "/RdsStackExample/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/stage.ts:180:23)",
+              "process.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/app.ts:131:45)",
+              "Object.onceWrapper (node:events:510:26)",
+              "process.emit (node:events:390:28)",
+              "process.emit (node:domain:475:12)",
+              "process.emit.sharedData.processEmitHook.installedValue [as emit] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@cspotcode/source-map-support/source-map-support.js:745:40)"
+            ]
+          }
+        ],
+        "/RdsStackExample/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable",
+            "trace": [
+              "new MetadataResource (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:31:27)",
+              "/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:166:5",
+              "visit (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:231:5)",
+              "visit (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:227:5)",
+              "injectMetadataResources (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:157:3)",
+              "Object.synthesize (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/stage.ts:180:23)",
+              "process.<anonymous> (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@aws-cdk/core/lib/app.ts:131:45)",
+              "Object.onceWrapper (node:events:510:26)",
+              "process.emit (node:events:390:28)",
+              "process.emit (node:domain:475:12)",
+              "process.emit.sharedData.processEmitHook.installedValue [as emit] (/Users/bsingh/git-repos/aws-sdk-rds-s3-stack-node/node_modules/@cspotcode/source-map-support/source-map-support.js:745:40)"
+            ]
+          }
+        ]
+      },
+      "displayName": "RdsStackExample"
+    }
+  }
+}
