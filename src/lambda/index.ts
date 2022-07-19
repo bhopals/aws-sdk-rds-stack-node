@@ -18,63 +18,47 @@ export async function main(
   console.log(event);
   console.log(context);
 
-  // accessing environment variables 👇
-  console.log("region 👉", process.env.region);
-  console.log("availabilityZones 👉", process.env.availabilityZones);
-  console.log("endpoint 👉", process.env.endpoint);
-  console.log("port 👉", process.env.port);
-  console.log("databaseName 👉", process.env.databaseName);
-  console.log("userName 👉", process.env.userName);
-  console.log("password 👉", process.env.password);
-
   const sqlConfig = {
     user: process.env.userName,
     password: process.env.password,
     database: process.env.databaseName,
     host: process.env.endpoint,
-    // pool: {
-    //   max: 10,
-    //   min: 0,
-    //   idleTimeoutMillis: 30000,
-    // },
-    // options: {
-    //   encrypt: true, // for azure
-    //   trustServerCertificate: false, // change to true for local dev / self-signed certs
-    // },
   };
 
-  let response;
+  let response = {} as any;
+  const tableName = "Users";
   try {
-    // make sure that any items are correctly URL encoded in the connection string
-    console.log("BEFORE>sqlConfig>", sqlConfig);
     let connection = await mysql.createConnection(sqlConfig);
-    console.log("connect>>", connection);
 
-    // //CREATE DATABASE
-    // const db = await connection.query(
-    //   `CREATE DATABASE mydb${Math.floor(Math.random() * 100)}`
-    // );
-    // const tb = await connection.query(
-    //   `CREATE TABLE customers (name VARCHAR(255), address VARCHAR(255))`
-    // );
+    //LIST DATABASE
+    const [rows] = await connection.query("show databases");
+    response.databases = rows;
 
-    // const rec = await connection.query(
-    //   `INSERT INTO customers (name, address) VALUES ('Company Inc', 'Highway 37')`
-    // );
+    //LIST TABLES
+    const [tables] = await connection.query("show tables");
 
-    // const result = await connection.query(`select * from customers`);
-    const [result, fields] = await connection.execute(
-      "SELECT * FROM `table` WHERE `name` = ? AND `age` > ?",
-      ["Morty", 14]
+    const isTableExists = tables.some(
+      (el: any) => el.Tables_in_apps === tableName
+    );
+    if (!isTableExists) {
+      //CREATE TABLE
+      await connection.execute(
+        `CREATE TABLE Users (id VARCHAR(255), name VARCHAR(255))`
+      );
+    }
+
+    //INSERT RECORD IN TABLE
+    await connection.execute(
+      `INSERT INTO ${tableName} (id, name) VALUES('111', 'ZZZZ')`
     );
 
-    console.dir("result>", result);
-    console.dir("fields>", fields);
+    //RETRIEVE RECORDS
+    const [result] = await connection.execute(`SELECT * FROM ${tableName}`);
 
     response = {
       body: JSON.stringify({
         result,
-        fields,
+        tables,
       }),
       statusCode: 200,
     };

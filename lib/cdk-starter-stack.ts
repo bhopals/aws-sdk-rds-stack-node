@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as cdk from "aws-cdk-lib";
 import * as lambda from "aws-cdk-lib/aws-lambda";
+import { Bucket } from "aws-cdk-lib/aws-s3";
 
 import { CfnOutput, Aws, SecretValue } from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
@@ -17,6 +18,20 @@ import {
   PRIVATE_LAMBDA_PATH,
   FUN_LABEL,
   ARN_LABEL,
+  RDS_DB_NAME,
+  RDS_DB_USER,
+  RDS_DB_PASSWORD,
+  RDS_ENDPOINT,
+  RDS_SG_ALLOW_TCP,
+  RDS_VPC_ID,
+  RDS_INSTANCE_ID,
+  RDS_INSTANCE_NAME,
+  RDS_SECURITY_GROUP_ID,
+  RDS_SECURITY_GROUP_NAME,
+  RDS_SUBNET_NAME,
+  S3_BUCKET_NAME,
+  S3_BUCKET_ID,
+  S3_BUCKET_ARN,
 } from "./stackConfiguration";
 import {
   Vpc,
@@ -39,39 +54,73 @@ export class CdkStarterStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    //// RDS
-    const databaseName = "apps";
-    const userName = "admin";
-    const password = "admin123456";
+    /*** RDS INSTANCE (VPC + SUBNET + SECURITY GROUP + MYSQL Instance) */
+    const dbInstance = this.createRDSInstance(id);
 
-    const vpc = new Vpc(this, "public-rds-vpc", {
+    /*** S3 BUCKET */
+    const bucket = this.createS3Bucket();
+
+    /*** LAMBDA ROLE */
+    const role = this.createLambdaRole();
+
+    /*** PRIVATE LAMBDA FUNCTION */
+    const privateLambda = this.createPrivateLambda(role);
+
+    /*** PUBLIC LAMBDA FUNCTION */
+    const publicLambda = this.createPublicLambda(role, dbInstance, bucket);
+    bucket.grantReadWrite(publicLambda);
+
+    /** Expose PUBLIC LAMBDA URL*/
+    const fnUrl = publicLambda.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
+    /** OUTPUT PUBLIC LAMBDA URL*/
+    new CfnOutput(this, PUBLIC_LAMBDA_URL, {
+      value: fnUrl.url,
+    });
+
+    /** OUTPUT DB INSTANCE ENDPOINT*/
+    new CfnOutput(this, RDS_ENDPOINT, {
+      value: dbInstance.dbInstanceEndpointAddress,
+    });
+
+    /** OUTPUT S3 BUCKET NAME*/
+    new CfnOutput(this, S3_BUCKET_NAME, {
+      value: bucket.bucketName,
+    });
+
+    /** OUTPUT S3 BUCKET NAME*/
+    new CfnOutput(this, S3_BUCKET_ARN, {
+      value: bucket.bucketArn,
+    });
+  }
+
+  private createRDSInstance(id: string) {
+    const vpc = new Vpc(this, RDS_VPC_ID, {
       subnetConfiguration: [
         {
           cidrMask: 24,
-          name: "public-subnet",
+          name: RDS_SUBNET_NAME,
           subnetType: SubnetType.PUBLIC,
         },
       ],
     });
 
-    const fnSg = new SecurityGroup(this, "public-rds-sg", {
-      securityGroupName: `${id}PublicRdsSG`,
+    const fnSg = new SecurityGroup(this, RDS_SECURITY_GROUP_ID, {
+      securityGroupName: RDS_SECURITY_GROUP_NAME,
       vpc: vpc,
       allowAllOutbound: true,
     });
 
-    fnSg.addIngressRule(
-      Peer.anyIpv4(),
-      Port.tcp(3306),
-      "allow TCP access from anywhere"
-    );
+    fnSg.addIngressRule(Peer.anyIpv4(), Port.tcp(3306), RDS_SG_ALLOW_TCP);
 
-    const dbInstance = new DatabaseInstance(this, "public-db", {
+    const dbInstance = new DatabaseInstance(this, RDS_INSTANCE_ID, {
       engine: DatabaseInstanceEngine.mysql({
         version: MysqlEngineVersion.VER_8_0_19,
       }),
       vpc,
-      instanceIdentifier: `public-db-rds`,
+      instanceIdentifier: RDS_INSTANCE_NAME,
       vpcSubnets: {
         subnetType: SubnetType.PUBLIC,
       },
@@ -81,16 +130,61 @@ export class CdkStarterStack extends cdk.Stack {
       ),
       publiclyAccessible: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
-      databaseName,
+      databaseName: RDS_DB_NAME,
       securityGroups: [fnSg],
-      //      credentials: Credentials.fromGeneratedSecret("myname"),
+      //credentials: Credentials.fromGeneratedSecret("myname"),
       credentials: Credentials.fromPassword(
-        userName,
-        new SecretValue(password)
+        RDS_DB_USER,
+        new SecretValue(RDS_DB_PASSWORD)
       ),
     });
+    return dbInstance;
+  }
 
-    //// LAMBDA
+  private createPublicLambda(role: Role, db: DatabaseInstance, bucket: Bucket) {
+    return new NodejsFunction(this, `${appName}-${LambdaType.PUBLIC_LAMBDA}`, {
+      memorySize: 1024,
+      functionName: `${appName}-${LambdaType.PUBLIC_LAMBDA}`,
+      timeout: cdk.Duration.seconds(5),
+      runtime: lambda.Runtime.NODEJS_16_X,
+      handler,
+      role,
+      entry: path.join(__dirname, PUBLIC_LAMBDA_PATH),
+      bundling: {
+        minify: false,
+        externalModules: [AWS_SDK],
+      },
+      environment: {
+        region: cdk.Stack.of(this).region,
+        availabilityZones: JSON.stringify(cdk.Stack.of(this).availabilityZones),
+        endpoint: db.dbInstanceEndpointAddress,
+        port: db.dbInstanceEndpointPort,
+        databaseName: RDS_DB_NAME,
+        userName: RDS_DB_USER,
+        password: RDS_DB_PASSWORD,
+        bucketName: bucket.bucketName,
+        bucketArn: bucket.bucketArn,
+      },
+    });
+  }
+
+  private createPrivateLambda(role: Role) {
+    return new NodejsFunction(this, `${appName}-${LambdaType.PRIVATE_LAMBDA}`, {
+      memorySize: 1024,
+      timeout: cdk.Duration.seconds(5),
+      runtime: lambda.Runtime.NODEJS_16_X,
+      handler,
+      role,
+      functionName: `${appName}-${LambdaType.PRIVATE_LAMBDA}`,
+      entry: path.join(__dirname, PRIVATE_LAMBDA_PATH),
+      bundling: {
+        minify: false,
+        externalModules: [AWS_SDK],
+      },
+    });
+  }
+
+  private createLambdaRole() {
     const role = new Role(this, `${appName}-${LambdaRole.NAME}`, {
       assumedBy: new ServicePrincipal(LambdaRole.SERVICE_PRINCIPAL),
     });
@@ -104,62 +198,11 @@ export class CdkStarterStack extends cdk.Stack {
         actions: [LambdaRole.ACTIONS],
       })
     );
+    return role;
+  }
 
-    /*** PRIVATE LAMBDA FUNCTION */
-    const privateLambda = new NodejsFunction(
-      this,
-      `${appName}-${LambdaType.PRIVATE_LAMBDA}`,
-      {
-        memorySize: 1024,
-        timeout: cdk.Duration.seconds(5),
-        runtime: lambda.Runtime.NODEJS_16_X,
-        handler,
-        role,
-        functionName: `${appName}-${LambdaType.PRIVATE_LAMBDA}`,
-        entry: path.join(__dirname, PRIVATE_LAMBDA_PATH),
-        bundling: {
-          minify: false,
-          externalModules: [AWS_SDK],
-        },
-      }
-    );
-
-    /*** PUBLIC LAMBDA FUNCTION */
-    const publicLambda = new NodejsFunction(
-      this,
-      `${appName}-${LambdaType.PUBLIC_LAMBDA}`,
-      {
-        memorySize: 1024,
-        functionName: `${appName}-${LambdaType.PUBLIC_LAMBDA}`,
-        timeout: cdk.Duration.seconds(5),
-        runtime: lambda.Runtime.NODEJS_16_X,
-        handler,
-        role,
-        entry: path.join(__dirname, PUBLIC_LAMBDA_PATH),
-        bundling: {
-          minify: false,
-          externalModules: [AWS_SDK],
-        },
-        environment: {
-          region: cdk.Stack.of(this).region,
-          availabilityZones: JSON.stringify(
-            cdk.Stack.of(this).availabilityZones
-          ),
-          endpoint: dbInstance.dbInstanceEndpointAddress,
-          port: dbInstance.dbInstanceEndpointPort,
-          databaseName,
-          userName,
-          password,
-        },
-      }
-    );
-
-    const fnUrl = publicLambda.addFunctionUrl({
-      authType: lambda.FunctionUrlAuthType.NONE,
-    });
-
-    new CfnOutput(this, PUBLIC_LAMBDA_URL, {
-      value: fnUrl.url,
-    });
+  private createS3Bucket() {
+    const bucket = new Bucket(this, S3_BUCKET_ID);
+    return bucket;
   }
 }

@@ -39,3 +39,7 @@ cdk destroy
 - Make sure to go to S3, and delete the bucket with name something that looks like(`cdk-*-us-west-2`)
 
 - Make sure to go to CloudFormation, and delete any Stack related (especially - `CDKToolkit`)
+
+- MYSQL Documentation
+  - https://www.npmjs.com/package/mysql2
+  - https://github.com/sidorares/node-mysql2/tree/master/documentation
