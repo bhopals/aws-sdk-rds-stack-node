@@ -155,7 +155,7 @@ export class CdkStarterStack extends cdk.Stack {
     return new NodejsFunction(this, `${appName}-${LambdaType.PUBLIC_LAMBDA}`, {
       memorySize: 1024,
       functionName: `${appName}-${LambdaType.PUBLIC_LAMBDA}`,
-      timeout: cdk.Duration.seconds(5),
+      timeout: cdk.Duration.seconds(500),
       runtime: lambda.Runtime.NODEJS_16_X,
       handler,
       role,
@@ -181,7 +181,7 @@ export class CdkStarterStack extends cdk.Stack {
   private createPrivateLambda(role: Role) {
     return new NodejsFunction(this, `${appName}-${LambdaType.PRIVATE_LAMBDA}`, {
       memorySize: 1024,
-      timeout: cdk.Duration.seconds(5),
+      timeout: cdk.Duration.seconds(500),
       runtime: lambda.Runtime.NODEJS_16_X,
       handler,
       role,
