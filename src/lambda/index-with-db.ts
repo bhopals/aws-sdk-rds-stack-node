@@ -9,14 +9,7 @@ import {
   UTF_8,
 } from "../../lib/stackConfiguration";
 
-import {
-  S3Client,
-  ListObjectsCommand,
-  PutObjectCommand,
-  DeleteObjectCommand,
-} from "@aws-sdk/client-s3";
-
-const mysql = require("mysql2/promise");
+var mysql = require("mysql2/promise");
 
 export async function main(
   event: APIGatewayProxyEventV2,
@@ -62,36 +55,10 @@ export async function main(
     //RETRIEVE RECORDS
     const [result] = await connection.execute(`SELECT * FROM ${tableName}`);
 
-    //S3 Bucket
-    const client = new S3Client({});
-    const listCommand = new ListObjectsCommand({
-      Bucket: process.env.bucketName,
-    });
-
-    const putCommand = new PutObjectCommand({
-      Bucket: process.env.bucketName,
-      Key: "test-key",
-      Body: "TEST STRING TO BE STORED>>>",
-    });
-
-    const deleteCommand = new DeleteObjectCommand({
-      Bucket: process.env.bucketName,
-      Key: "1658592727_clients.jpeg",
-    });
-
-    const s3ListResponse = await client.send(listCommand);
-    const s3PutResponse = await client.send(putCommand);
-    const s3DeleteResponse = await client.send(deleteCommand);
-
-    console.log("s3ListResponse>>", s3ListResponse);
-
     response = {
       body: JSON.stringify({
         result,
         tables,
-        s3ListResponse,
-        s3PutResponse,
-        s3DeleteResponse,
       }),
       statusCode: 200,
     };

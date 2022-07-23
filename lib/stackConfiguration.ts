@@ -2,7 +2,7 @@ export const UTF_8 = "utf-8";
 export const AWS_SDK = "aws-sdk";
 export const handler: string = "main";
 export const region: string = "us-west-2";
-export const appName: string = "rds-stack";
+export const appName: string = "laravel-app";
 
 export const FUN_LABEL: string = ":function:";
 export const ARN_LABEL: string = "arn:aws:lambda:";
@@ -44,4 +44,7 @@ export const S3_BUCKET_NAME = "s3-bucket";
 export const S3_BUCKET_ARN = "s3-bucket-arn";
 export const S3_BUCKET_ID = `${appName}-app-details-bucket`;
 
-export const APP_DESC = "laravel-app";
+export const S3_PRINCIPAL = "*";
+export const S3_GET_OBJECT = "s3:GetObject";
+export const S3_PUT_OBJECT = "s3:PutObject";
+export const S3_DELETE_OBJECT = "s3:DeleteObject";

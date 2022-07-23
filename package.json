@@ -15,6 +15,7 @@
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.128.0",
     "@aws-sdk/client-rds": "^3.128.0",
+    "@aws-sdk/client-s3": "^3.135.0",
     "aws-cdk-lib": "^2.31.1",
     "constructs": "^10.0.112",
     "mysql": "^2.18.1",

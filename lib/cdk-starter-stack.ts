@@ -5,7 +5,13 @@ import { Bucket } from "aws-cdk-lib/aws-s3";
 
 import { CfnOutput, Aws, SecretValue } from "aws-cdk-lib";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { Role, ServicePrincipal, PolicyStatement } from "aws-cdk-lib/aws-iam";
+import {
+  Role,
+  ServicePrincipal,
+  PolicyStatement,
+  Effect,
+  AnyPrincipal,
+} from "aws-cdk-lib/aws-iam";
 
 import {
   LambdaType,
@@ -32,6 +38,10 @@ import {
   S3_BUCKET_NAME,
   S3_BUCKET_ID,
   S3_BUCKET_ARN,
+  S3_PRINCIPAL,
+  S3_GET_OBJECT,
+  S3_DELETE_OBJECT,
+  S3_PUT_OBJECT,
 } from "./stackConfiguration";
 import {
   Vpc,
@@ -202,7 +212,18 @@ export class CdkStarterStack extends cdk.Stack {
   }
 
   private createS3Bucket() {
-    const bucket = new Bucket(this, S3_BUCKET_ID);
+    const bucket = new Bucket(this, S3_BUCKET_ID, {
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+    });
+    bucket.addToResourcePolicy(
+      new PolicyStatement({
+        effect: Effect.ALLOW,
+        principals: [new AnyPrincipal()],
+        actions: [S3_GET_OBJECT, S3_DELETE_OBJECT, S3_PUT_OBJECT],
+        resources: [`${bucket.bucketArn}/${S3_PRINCIPAL}`],
+      })
+    );
+
     return bucket;
   }
 }
