@@ -261,6 +261,7 @@ export class CdkStarterStack extends cdk.Stack {
   private createS3Bucket() {
     const bucket = new Bucket(this, S3_BUCKET_ID, {
       removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
     bucket.addToResourcePolicy(
       new PolicyStatement({
