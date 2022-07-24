@@ -10,6 +10,9 @@ export const INVOCATION_TYPE = "RequestResponse";
 
 export const BASE_PATH: string = "/../src/lambda";
 export const PUBLIC_LAMBDA_URL: string = "publicLambdaUrl";
+export const SERVER_LAMBDA_URL: string = "serverLambdaUrl";
+
+export const LAMBDA_SERVER_PATH: string = `${BASE_PATH}/nodeServer.ts`;
 export const PUBLIC_LAMBDA_PATH: string = `${BASE_PATH}/index.ts`;
 export const PRIVATE_LAMBDA_PATH: string = `${BASE_PATH}/internal.ts`;
 
@@ -22,6 +25,7 @@ export enum LambdaRole {
 export enum LambdaType {
   PUBLIC_LAMBDA = "public-lambda",
   PRIVATE_LAMBDA = "private-lambda",
+  LAMBDA_SERVER = "lambda-server",
 }
 
 /**** RDS Constants */
