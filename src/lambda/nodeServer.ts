@@ -50,9 +50,7 @@ export async function main(
       token
     );
     response = {
-      clients,
-      user,
-      statusCode: 200,
+      body: JSON.stringify({ clients }),
     };
   } catch (err) {
     console.log("ERR>", err);
