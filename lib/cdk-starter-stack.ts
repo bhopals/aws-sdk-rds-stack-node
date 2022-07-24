@@ -11,6 +11,7 @@ import {
   PolicyStatement,
   Effect,
   AnyPrincipal,
+  ManagedPolicy,
 } from "aws-cdk-lib/aws-iam";
 
 import {
@@ -250,6 +251,10 @@ export class CdkStarterStack extends cdk.Stack {
         actions: [LambdaRole.ACTIONS],
       })
     );
+
+    // role.addManagedPolicy(
+    //   ManagedPolicy.fromAwsManagedPolicyName("AmazonAPIGatewayInvokeFullAccess")
+    // );
     return role;
   }
 

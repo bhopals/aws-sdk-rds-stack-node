@@ -13,6 +13,7 @@
     "lint": "eslint . --ext js,jsx,ts,tsx --fix"
   },
   "dependencies": {
+    "@aws-sdk/client-api-gateway": "^3.131.0",
     "@aws-sdk/client-lambda": "^3.128.0",
     "@aws-sdk/client-rds": "^3.128.0",
     "@aws-sdk/client-s3": "^3.135.0",
