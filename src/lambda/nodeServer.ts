@@ -10,7 +10,7 @@ export async function main(
   console.log(context);
 
   let response = {} as any;
-  const API_URL = "https://oipwbcpw1a.execute-api.us-west-2.amazonaws.com";
+  const API_URL = "https://7cp0guqyr4.execute-api.us-west-2.amazonaws.com";
   const random = Math.floor(Math.random() * 100);
   const user = {
     name: `lambda${random}`,
@@ -24,7 +24,7 @@ export async function main(
     const res = await makeRequest(`${API_URL}/api/register`, "POST", user);
     console.log("res>", res);
 
-    const token = await makeRequest(`${API_URL}/api/login`, "POST", {
+    const { token } = await makeRequest(`${API_URL}/api/login`, "POST", {
       email: user.email,
       password: user.password,
     });
