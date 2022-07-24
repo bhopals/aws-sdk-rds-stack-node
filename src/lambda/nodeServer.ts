@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/require-await */
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from "aws-lambda";
+// import {
+//   APIGatewayClient,
+//   GetRestApiCommand,
+// } from "@aws-sdk/client-api-gateway";
+// import { REST_API_ID } from "../../lib/stackConfiguration";
+
 import fetch from "node-fetch";
 
 export async function main(
@@ -10,7 +16,6 @@ export async function main(
   console.log(context);
 
   let response = {} as any;
-  const API_URL = "https://7cp0guqyr4.execute-api.us-west-2.amazonaws.com";
   const random = Math.floor(Math.random() * 100);
   const user = {
     name: `lambda${random}`,
@@ -20,6 +25,14 @@ export async function main(
   };
 
   try {
+    // const client = new APIGatewayClient({});
+    // const apiResp = await client.send(
+    //   new GetRestApiCommand({ restApiId: REST_API_ID })
+    // );
+    // console.log("apiResp>", apiResp);
+
+    const API_URL = `https://7cp0guqyr4.execute-api.us-west-2.amazonaws.com`;
+
     console.log("user>", user);
     const res = await makeRequest(`${API_URL}/api/register`, "POST", user);
     console.log("res>", res);
@@ -30,9 +43,14 @@ export async function main(
     });
     console.log("token>", token);
 
-    response = await makeRequest(`${API_URL}/api/clients`, "GET", {}, token);
+    const clients = await makeRequest(
+      `${API_URL}/api/clients`,
+      "GET",
+      {},
+      token
+    );
     response = {
-      body: JSON.stringify(response),
+      clients,
       user,
       statusCode: 200,
     };
