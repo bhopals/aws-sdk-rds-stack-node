@@ -42,6 +42,8 @@ import {
   S3_GET_OBJECT,
   S3_DELETE_OBJECT,
   S3_PUT_OBJECT,
+  LAMBDA_SERVER_PATH,
+  SERVER_LAMBDA_URL,
 } from "./stackConfiguration";
 import {
   Vpc,
@@ -76,16 +78,29 @@ export class CdkStarterStack extends cdk.Stack {
     /*** PRIVATE LAMBDA FUNCTION */
     const privateLambda = this.createPrivateLambda(role);
 
+    /*** PUBLIC LAMBDA SERVER FUNCTION */
+    const nodeJsServer = this.createNodeJsServer(role, dbInstance, bucket);
+
     /*** PUBLIC LAMBDA FUNCTION */
     const publicLambda = this.createPublicLambda(role, dbInstance, bucket);
     bucket.grantReadWrite(publicLambda);
+
+    /** Expose LAMDA SERVER LAMBDA URL*/
+    const fnServerUrl = nodeJsServer.addFunctionUrl({
+      authType: lambda.FunctionUrlAuthType.NONE,
+    });
+
+    /** OUTPUT NODEJS SERVER LAMBDA URL*/
+    new CfnOutput(this, SERVER_LAMBDA_URL, {
+      value: fnServerUrl.url,
+    });
 
     /** Expose PUBLIC LAMBDA URL*/
     const fnUrl = publicLambda.addFunctionUrl({
       authType: lambda.FunctionUrlAuthType.NONE,
     });
 
-    /** OUTPUT PUBLIC LAMBDA URL*/
+    /** OUTPUT PUBLIC LAMBDA UR*/
     new CfnOutput(this, PUBLIC_LAMBDA_URL, {
       value: fnUrl.url,
     });
@@ -160,6 +175,33 @@ export class CdkStarterStack extends cdk.Stack {
       handler,
       role,
       entry: path.join(__dirname, PUBLIC_LAMBDA_PATH),
+      bundling: {
+        minify: false,
+        externalModules: [AWS_SDK],
+      },
+      environment: {
+        region: cdk.Stack.of(this).region,
+        availabilityZones: JSON.stringify(cdk.Stack.of(this).availabilityZones),
+        endpoint: db.dbInstanceEndpointAddress,
+        port: db.dbInstanceEndpointPort,
+        databaseName: RDS_DB_NAME,
+        userName: RDS_DB_USER,
+        password: RDS_DB_PASSWORD,
+        bucketName: bucket.bucketName,
+        bucketArn: bucket.bucketArn,
+      },
+    });
+  }
+
+  private createNodeJsServer(role: Role, db: DatabaseInstance, bucket: Bucket) {
+    return new NodejsFunction(this, `${appName}-${LambdaType.LAMBDA_SERVER}`, {
+      memorySize: 1024,
+      functionName: `${appName}-${LambdaType.LAMBDA_SERVER}`,
+      timeout: cdk.Duration.seconds(500),
+      runtime: lambda.Runtime.NODEJS_16_X,
+      handler,
+      role,
+      entry: path.join(__dirname, LAMBDA_SERVER_PATH),
       bundling: {
         minify: false,
         externalModules: [AWS_SDK],
