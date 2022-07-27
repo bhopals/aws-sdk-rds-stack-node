@@ -83,7 +83,7 @@ export async function main(
     const s3PutResponse = await client.send(putCommand);
     const s3DeleteResponse = await client.send(deleteCommand);
 
-    console.log("s3ListResponse>>", s3ListResponse);
+    console.log("s3ListResponse>>>", s3ListResponse);
 
     response = {
       body: JSON.stringify({
