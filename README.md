@@ -10,7 +10,7 @@
 npm install
 ```
 
-3. ONE TIME ONLY - if it is the First time, then bootstrap the repository (Only run this the very first time, SKIP after that)
+3. ONE TIME ONLY - if it is the First time, then bootstrap the repository/stack config (Only run this the very first time, SKIP after that)
 
 ```bash
 npx aws-cdk bootstrap
