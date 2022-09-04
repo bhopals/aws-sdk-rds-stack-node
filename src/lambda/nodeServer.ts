@@ -25,7 +25,7 @@ export async function main(
   };
 
   try {
-    // // ACCESS API GATEWAY
+    // // ACCESS API GATEWAY using CDK
     // const client = new APIGatewayClient({});
     // const apiResp = await client.send(
     //   new GetRestApiCommand({ restApiId: REST_API_ID })
