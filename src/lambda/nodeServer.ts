@@ -30,7 +30,7 @@ export async function main(
     // const apiResp = await client.send(
     //   new GetRestApiCommand({ restApiId: REST_API_ID })
     // );
-    // console.log("apiResp>", apiResp);
+    // console.log("apiResp>>>>", apiResp);
 
     const API_URL = `https://7cp0guqyr4.execute-api.us-west-2.amazonaws.com`;
 
