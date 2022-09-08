@@ -54,12 +54,12 @@ export async function main(
       body: JSON.stringify({ clients }),
     };
   } catch (err) {
-    console.log("ERR>", err);
+    console.log("ERR>>>>>", err);
     response = {
       body: JSON.stringify({
         err,
       }),
-      statusCode: 500,
+      statusCode: 501,
     };
   }
 
