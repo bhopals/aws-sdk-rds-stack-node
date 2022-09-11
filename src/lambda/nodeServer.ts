@@ -59,7 +59,7 @@ export async function main(
       body: JSON.stringify({
         err,
       }),
-      statusCode: 504,
+      statusCode: 404,
     };
   }
 
