@@ -54,7 +54,7 @@ export async function main(
       body: JSON.stringify({ clients }),
     };
   } catch (err) {
-    console.log("ERR>>>>>>>>>>", err);
+    console.log("ERROR", err);
     response = {
       body: JSON.stringify({
         err,
