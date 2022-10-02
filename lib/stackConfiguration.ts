@@ -45,6 +45,8 @@ export const RDS_SG_ALLOW_TCP = "allow TCP access from anywhere";
 
 /*** S3 Bucket */
 export const S3_BUCKET_NAME = "s3-bucket";
+export const S3_BUCKET_DESC = "s3-bucket-details";
+
 export const S3_BUCKET_ARN = "s3-bucket-arn";
 export const S3_BUCKET_ID = `${appName}-app-details-bucket`;
 
