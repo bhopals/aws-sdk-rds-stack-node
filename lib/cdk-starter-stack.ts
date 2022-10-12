@@ -116,7 +116,7 @@ export class CdkStarterStack extends cdk.Stack {
       value: bucket.bucketName,
     });
 
-    /** OUTPUT S3 BUCKET NAME Public BUCKET name region az*/
+    /** OUTPUT S3 BUCKET NAME Public BUCKET name region with multiple az */
     new CfnOutput(this, S3_BUCKET_ARN, {
       value: bucket.bucketArn,
     });
