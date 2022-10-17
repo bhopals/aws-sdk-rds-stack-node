@@ -111,7 +111,7 @@ export class CdkStarterStack extends cdk.Stack {
       value: dbInstance.dbInstanceEndpointAddress,
     });
 
-    /** OUTPUT S3 BUCKET NAME*/
+    /** OUTPUT S3 BUCKET NAME init*/
     new CfnOutput(this, S3_BUCKET_NAME, {
       value: bucket.bucketName,
     });
