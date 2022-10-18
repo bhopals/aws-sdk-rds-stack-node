@@ -101,7 +101,7 @@ export class CdkStarterStack extends cdk.Stack {
       authType: lambda.FunctionUrlAuthType.NONE,
     });
 
-    /** OUTPUT PUBLIC LAMBDA UR*/
+    /** OUTPUT PUBLIC LAMBDA URLs*/
     new CfnOutput(this, PUBLIC_LAMBDA_URL, {
       value: fnUrl.url,
     });
