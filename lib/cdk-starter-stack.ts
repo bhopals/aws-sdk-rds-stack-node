@@ -67,7 +67,7 @@ export class CdkStarterStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    /*** RDS INSTANCE (VPC + SUBNET + SECURITY GROUP + MYSQL Instance) */
+    /*** RDS INSTANCE (VPC + SUBNET + SECURITY GROUP + MYSQL Instance + Instance Memory) */
     const dbInstance = this.createRDSInstance(id);
 
     /*** S3 BUCKET */
