@@ -1,6 +1,6 @@
 export const UTF_8 = "utf-8";
 export const AWS_SDK = "aws-sdk";
-export const handler: string = "main";
+export const handler: string = "main-app";
 export const region: string = "us-west-2";
 export const appName: string = "t2-laravel-app";
 
