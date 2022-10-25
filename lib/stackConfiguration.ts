@@ -3,7 +3,7 @@ export const AWS_SDK = "aws-sdk";
 export const handler: string = "main-app";
 export const region: string = "us-west-2";
 export const appName: string = "t2-laravel-app";
-export const regionActive: string = "us-west-2";
+export const regionActive: string = "us-east-1";
 
 export const FUN_LABEL: string = ":function:";
 export const ARN_LABEL: string = "arn:aws:lambda:";
