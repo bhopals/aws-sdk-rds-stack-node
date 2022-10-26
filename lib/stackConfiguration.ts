@@ -1,4 +1,5 @@
 export const UTF_8 = "utf-8";
+export const UTF_10 = "utf-10";
 export const AWS_SDK = "aws-sdk";
 export const handler: string = "main-app";
 export const region: string = "us-west-2";
