@@ -4,6 +4,8 @@ export const UTF_14 = "utf-14";
 
 export const AWS_SDK = "aws-sdk";
 export const handler: string = "main-app";
+export const APP_NAME: string = "app-stack";
+
 export const region: string = "us-west-2";
 export const appName: string = "t2-laravel-app";
 export const regionActive: string = "us-east-1";
