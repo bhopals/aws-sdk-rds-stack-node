@@ -33,7 +33,7 @@ export async function main(
   };
 
   let response = {} as any;
-  const tableName = "SUPER_USER";
+  const tableName = "SUPER_USER_TABLE";
   try {
     let connection = await mysql.createConnection(sqlConfig);
 
