@@ -37,11 +37,11 @@ export async function main(
   try {
     let connection = await mysql.createConnection(sqlConfig);
 
-    //LIST DATABASES
+    //LIST ALL DATABASES
     const [rows] = await connection.query("show databases");
     response.databases = rows;
 
-    //LIST TABLES
+    //LIST ALL TABLES
     const [tables] = await connection.query("show tables");
 
     const isTableExists = tables.some(
