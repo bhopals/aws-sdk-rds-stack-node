@@ -37,7 +37,7 @@ export async function main(
   try {
     let connection = await mysql.createConnection(sqlConfig);
 
-    //LIST ALL DATABASES
+    //LIST ALL DATABASES Available
     const [rows] = await connection.query("show databases");
     response.databases = rows;
 
