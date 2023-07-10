@@ -31,7 +31,7 @@ export async function main(
     database: process.env.databaseName,
     host: process.env.endpoint,
   };
-
+  //TODO - INVOCATION_TYPE
   let response = {} as any;
   const tableName = "SUPER_USER_T_NAME";
   try {
