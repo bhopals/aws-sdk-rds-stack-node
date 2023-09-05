@@ -62,6 +62,8 @@ export async function main(
     //RETRIEVE RECORDS
     const [result] = await connection.execute(`SELECT * FROM ${tableName}`);
 
+    console.log(result);
+
     //S3 Bucket
     const client = new S3Client({});
     const listCommand = new ListObjectsCommand({
