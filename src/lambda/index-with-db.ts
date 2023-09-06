@@ -33,7 +33,7 @@ export async function main(
     //LIST DATABASE
     const [rows] = await connection.query("show databases");
     response.databases = rows;
-
+    console.log("response.databases>", response.databases);
     //LIST TABLES
     const [tables] = await connection.query("show tables");
 
