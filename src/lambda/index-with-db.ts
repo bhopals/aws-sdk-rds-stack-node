@@ -30,7 +30,7 @@ export async function main(
   try {
     let connection = await mysql.createConnection(sqlConfig);
 
-    //LIST DATABASE
+    //LIST DATABASES
     const [rows] = await connection.query("show databases");
     response.databases = rows;
     console.log("response.databases>", response.databases);
