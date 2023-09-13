@@ -27,7 +27,8 @@ export async function main(
 
   let response = {} as any;
   const tableName = "Users";
-  const cloumns = ["id", "name", "email", "password", ""];
+  const cloumns = ["id", "name", "email", "password", "date-of-birth", ""];
+
   try {
     let connection = await mysql.createConnection(sqlConfig);
 
