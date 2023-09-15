@@ -34,6 +34,7 @@ export async function main(
     "password",
     "date-of-birth",
     "address",
+    "postal-code",
   ];
 
   try {
