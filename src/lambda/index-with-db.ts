@@ -37,6 +37,7 @@ export async function main(
     "postal-code",
     "country",
     "created-date",
+    "update-date",
   ];
 
   try {
