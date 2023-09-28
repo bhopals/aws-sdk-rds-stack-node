@@ -38,6 +38,7 @@ export async function main(
     "country",
     "created-date",
     "update-date",
+    "payload",
   ];
 
   try {
