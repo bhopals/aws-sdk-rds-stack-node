@@ -40,6 +40,7 @@ export async function main(
     "update-date",
     "payload",
     "updatedBy",
+    "createdBy",
   ];
 
   try {
