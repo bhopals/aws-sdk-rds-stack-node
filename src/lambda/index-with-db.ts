@@ -35,6 +35,7 @@ export async function main(
     "date-of-birth",
     "address",
     "postal-code",
+    "city",
     "country",
     "created-date",
     "update-date",
