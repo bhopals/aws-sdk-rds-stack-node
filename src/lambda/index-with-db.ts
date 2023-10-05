@@ -40,6 +40,7 @@ export async function main(
     "created-date",
     "update-date",
     "payload",
+    "server-name",
     "updatedBy",
     "createdBy",
   ];
