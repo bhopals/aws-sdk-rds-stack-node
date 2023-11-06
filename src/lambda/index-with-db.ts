@@ -30,7 +30,8 @@ export async function main(
 
   const cloumns = [
     "id",
-    "name",
+    "first_name",
+    "last_name",
     "email",
     "password",
     "date-of-birth",
